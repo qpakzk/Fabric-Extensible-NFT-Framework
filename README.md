@@ -1,3 +1,1 @@
-# Decentralized Signature
-
-Decentralized Signature based on Hyperledger Fabric
+# Fabric Extensible Non-Fungible Token (NFT) Framework 

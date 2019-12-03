@@ -5,10 +5,9 @@ import kr.ac.postech.sslab.nft.NFT;
 import org.hyperledger.fabric.shim.ChaincodeStub;
 import java.util.List;
 
-public class CustomMain extends Main implements IEERC721, IXNFT {
-    private EERC721 eerc721 = new EERC721();
-    private DocNFT doc = new DocNFT();
-    private SigNFT sig = new SigNFT();
+public class CustomMain extends Main implements IXNFT {
+    private Type1NFT type1 = new Type1NFT();
+    private Type2NFT type2 = new Type2NFT();
 
     @Override
     public Response init(ChaincodeStub stub) {
@@ -22,21 +21,6 @@ public class CustomMain extends Main implements IEERC721, IXNFT {
             List<String> args = stub.getParameters();
 
             switch (func) {
-                case "balanceOf":
-                    return this.balanceOf(stub, args);
-
-                case "divide":
-                    return this.divide(stub, args);
-
-                case "deactivate":
-                    return this.deactivate(stub, args);
-
-                case "query":
-                    return this.query(stub, args);
-
-                case "queryHistory":
-                    return this.queryHistory(stub, args);
-
                 case "mint":
                     return this.mint(stub, args);
 
@@ -48,7 +32,6 @@ public class CustomMain extends Main implements IEERC721, IXNFT {
 
                 case "setXAttr":
                     return this.setXAttr(stub, args);
-
 
                 case "getXAttr":
                     return this.getXAttr(stub, args);
@@ -63,39 +46,14 @@ public class CustomMain extends Main implements IEERC721, IXNFT {
     }
 
     @Override
-    public Response balanceOf(ChaincodeStub stub, List<String> args) {
-        return this.eerc721.balanceOf(stub, args);
-    }
-
-    @Override
-    public Response divide(ChaincodeStub stub, List<String> args) {
-        return this.eerc721.divide(stub, args);
-    }
-
-    @Override
-    public Response deactivate(ChaincodeStub stub, List<String> args) {
-        return this.eerc721.deactivate(stub, args);
-    }
-
-    @Override
-    public Response query(ChaincodeStub stub, List<String> args) {
-        return this.eerc721.query(stub, args);
-    }
-
-    @Override
-    public Response queryHistory(ChaincodeStub stub, List<String> args) {
-        return this.eerc721.queryHistory(stub, args);
-    }
-
-    @Override
     public Response mint(ChaincodeStub stub, List<String> args) {
         String type = args.get(1).toLowerCase();
         switch (type) {
-            case "doc":
-                return this.doc.mint(stub, args);
+            case "type1":
+                return this.type1.mint(stub, args);
 
-            case "sig":
-                return this.sig.mint(stub, args);
+            case "type2":
+                return this.type2.mint(stub, args);
 
             default:
                 return super.mint(stub, args);
@@ -108,11 +66,11 @@ public class CustomMain extends Main implements IEERC721, IXNFT {
             String id = args.get(0).toLowerCase();
             NFT nft = NFT.read(stub, id);
             switch (nft.getType()) {
-                case "doc":
-                    return this.doc.getURI(stub, args);
+                case "type1":
+                    return this.type1.getURI(stub, args);
 
-                case "sig":
-                    return this.sig.getURI(stub, args);
+                case "type2":
+                    return this.type2.getURI(stub, args);
 
                 default:
                     throw new Throwable("FAILURE");
@@ -128,11 +86,11 @@ public class CustomMain extends Main implements IEERC721, IXNFT {
             String id = args.get(0).toLowerCase();
             NFT nft = NFT.read(stub, id);
             switch (nft.getType()) {
-                case "doc":
-                    return this.doc.setURI(stub, args);
+                case "type1":
+                    return this.type1.setURI(stub, args);
 
-                case "sig":
-                    return this.sig.setURI(stub, args);
+                case "type2":
+                    return this.type2.setURI(stub, args);
 
                 default:
                     throw new Throwable("FAILURE");
@@ -148,11 +106,11 @@ public class CustomMain extends Main implements IEERC721, IXNFT {
             String id = args.get(0).toLowerCase();
             NFT nft = NFT.read(stub, id);
             switch (nft.getType()) {
-                case "doc":
-                    return this.doc.setXAttr(stub, args);
+                case "type1":
+                    return this.type1.setXAttr(stub, args);
 
-                case "sig":
-                    return this.sig.setXAttr(stub, args);
+                case "type2":
+                    return this.type2.setXAttr(stub, args);
 
                 default:
                     throw  new Throwable("FAILURE");
@@ -168,11 +126,11 @@ public class CustomMain extends Main implements IEERC721, IXNFT {
             String id = args.get(0).toLowerCase();
             NFT nft = NFT.read(stub, id);
             switch (nft.getType()) {
-                case "doc":
-                    return this.doc.getXAttr(stub, args);
+                case "type1":
+                    return this.type1.getXAttr(stub, args);
 
-                case "sig":
-                    return this.sig.getXAttr(stub, args);
+                case "type2":
+                    return this.type2.getXAttr(stub, args);
 
                 default:
                     throw  new Throwable("FAILURE");

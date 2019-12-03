@@ -1,9 +1,8 @@
 package kr.ac.postech.sslab.adapter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import kr.ac.postech.sslab.type.IType;
-import kr.ac.postech.sslab.type.Document;
-import kr.ac.postech.sslab.type.Signature;
+import kr.ac.postech.sslab.type.*;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -12,12 +11,12 @@ public class XAttrAdapter implements IXAttr {
 
     XAttrAdapter(String type) {
         switch (type) {
-            case "doc":
-                this.xattr = new Document();
+            case "type1":
+                this.xattr = new Type1();
                 break;
 
-            case "sig":
-                this.xattr = new Signature();
+            case "type2":
+                this.xattr = new Type2();
                 break;
         }
     }

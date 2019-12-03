@@ -21,7 +21,7 @@ public class Type2NFT extends XNFT {
              */
             int num_of_args = 6;
             if (args.size() != num_of_args) {
-                throw new Throwable("FAILURE");
+                throw new Throwable(String.format("Incorrect number of arguments. Expecting %d", num_of_args));
             }
 
             String id = args.get(0);
@@ -48,7 +48,7 @@ public class Type2NFT extends XNFT {
 
             return newSuccessResponse("SUCCESS");
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 }

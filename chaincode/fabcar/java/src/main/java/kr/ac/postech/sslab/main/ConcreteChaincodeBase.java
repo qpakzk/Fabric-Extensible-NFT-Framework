@@ -57,12 +57,12 @@ public class ConcreteChaincodeBase extends ChaincodeBase {
             String func = stub.getFunction();
 
             if (!func.equals("init")) {
-                throw new Throwable("FAILURE");
+                throw new Throwable("Functions other than \"init\" are not supported");
             }
 
             List<String> args = stub.getParameters();
             if (args.size() != 0) {
-                throw new Throwable("FAILURE");
+                throw new Throwable("Incorrect number of arguments. Expecting 0");
             }
 
             ObjectMapper mapper = new ObjectMapper();
@@ -74,7 +74,7 @@ public class ConcreteChaincodeBase extends ChaincodeBase {
 
             return newSuccessResponse("SUCCESS");
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 

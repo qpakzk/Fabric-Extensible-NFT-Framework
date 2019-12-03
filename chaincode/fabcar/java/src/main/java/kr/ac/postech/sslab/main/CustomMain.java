@@ -41,7 +41,7 @@ public class CustomMain extends Main implements IXNFT {
             }
 
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 
@@ -73,10 +73,10 @@ public class CustomMain extends Main implements IXNFT {
                     return this.type2.getURI(stub, args);
 
                 default:
-                    throw new Throwable("FAILURE");
+                    throw new Throwable("No such token type exists");
             }
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 
@@ -93,10 +93,10 @@ public class CustomMain extends Main implements IXNFT {
                     return this.type2.setURI(stub, args);
 
                 default:
-                    throw new Throwable("FAILURE");
+                    throw new Throwable("No such token type exists");
             }
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 
@@ -113,10 +113,10 @@ public class CustomMain extends Main implements IXNFT {
                     return this.type2.setXAttr(stub, args);
 
                 default:
-                    throw  new Throwable("FAILURE");
+                    throw  new Throwable("No such token type exists");
             }
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 
@@ -133,10 +133,10 @@ public class CustomMain extends Main implements IXNFT {
                     return this.type2.getXAttr(stub, args);
 
                 default:
-                    throw  new Throwable("FAILURE");
+                    throw  new Throwable("No such token type exists");
             }
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 

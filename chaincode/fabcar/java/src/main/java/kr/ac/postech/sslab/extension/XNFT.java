@@ -14,7 +14,7 @@ public class XNFT extends BaseNFT implements IXNFT {
     public Response setURI(ChaincodeStub stub, List<String> args) {
         try {
             if (args.size() != 3) {
-                throw new Throwable("FAILURE");
+                throw new Throwable("Incorrect number of arguments. Expecting 3");
             }
 
             String id = args.get(0);
@@ -37,7 +37,7 @@ public class XNFT extends BaseNFT implements IXNFT {
 
             return newSuccessResponse("SUCCESS");
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 
@@ -59,7 +59,7 @@ public class XNFT extends BaseNFT implements IXNFT {
 
             return newSuccessResponse(value);
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 
@@ -67,7 +67,7 @@ public class XNFT extends BaseNFT implements IXNFT {
     public Response setXAttr(ChaincodeStub stub, List<String> args) {
         try {
             if (args.size() != 3) {
-                throw new Throwable("FAILURE");
+                throw new Throwable("Incorrect number of arguments. Expecting 3");
             }
 
             String id = args.get(0);
@@ -89,7 +89,7 @@ public class XNFT extends BaseNFT implements IXNFT {
 
             return newSuccessResponse("SUCCESS");
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 
@@ -97,7 +97,7 @@ public class XNFT extends BaseNFT implements IXNFT {
     public Response getXAttr(ChaincodeStub stub, List<String> args) {
         try {
             if (args.size() != 2) {
-                throw new Throwable("FAILURE");
+                throw new Throwable("Incorrect number of arguments. Expecting 2");
             }
 
             String id = args.get(0);
@@ -112,7 +112,7 @@ public class XNFT extends BaseNFT implements IXNFT {
             String value = nft.getXAttr(index);
             return newSuccessResponse(value);
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 }

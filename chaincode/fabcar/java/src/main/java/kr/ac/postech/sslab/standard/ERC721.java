@@ -13,7 +13,7 @@ public class ERC721 extends ConcreteChaincodeBase implements IERC721 {
 	public Response balanceOf(ChaincodeStub stub, List<String> args) {
 		try {
 			if (args.size() != 1) {
-				throw new Throwable("FAILURE");
+				throw new Throwable("Incorrect number of arguments. Expecting 1");
 			}
 
 			String owner = args.get(0);
@@ -21,7 +21,7 @@ public class ERC721 extends ConcreteChaincodeBase implements IERC721 {
 
 			return newSuccessResponse(Long.toString(ownedTokensCount));
 		} catch (Throwable throwable) {
-			return newErrorResponse("FAILURE");
+			return newErrorResponse(throwable.getMessage());
 		}
 	}
 

@@ -73,11 +73,11 @@ public class Main extends ConcreteChaincodeBase implements IERC721, IBaseNFT {
                     return this.getApprovee(stub, args);
 
                 default:
-                    throw new Throwable("FAILURE");
+                    throw new Throwable("No such function exists");
             }
 
         } catch (Throwable throwable) {
-            return newErrorResponse("FAILURE");
+            return newErrorResponse(throwable.getMessage());
         }
     }
 

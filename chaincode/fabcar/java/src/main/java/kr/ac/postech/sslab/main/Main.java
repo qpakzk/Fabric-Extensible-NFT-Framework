@@ -118,10 +118,6 @@ public class Main extends ConcreteChaincodeBase implements IERC721, IBaseNFT {
 
     @Override
     public Response mint(ChaincodeStub stub, List<String> args) {
-        if (args.size() == 2) {
-            return this.erc721.mint(stub, args);
-        }
-
         return this.nft.mint(stub, args);
     }
 
